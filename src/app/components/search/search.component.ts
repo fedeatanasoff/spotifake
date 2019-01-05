@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpotifakeService } from '../../services/spotifake.service';
 
 @Component({
   selector: 'app-search',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  artistaBuscado: any[] = [];
+  constructor(private spotifake: SpotifakeService) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  buscarArtista(artista: string) {
+    console.log(artista);
+
+    this.spotifake.getArtista(artista).subscribe(info => {
+      console.log(info);
+      this.artistaBuscado = info;
+    });
   }
-
 }

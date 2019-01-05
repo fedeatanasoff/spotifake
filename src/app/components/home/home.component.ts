@@ -11,8 +11,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private spotifake: SpotifakeService) {
     this.spotifake.getNewReleases().subscribe((info: any) => {
-      console.log(info.albums.items);
-      this.newReleases = info.albums.items;
+      console.log(info);
+      this.newReleases = info;
     });
   }
 
