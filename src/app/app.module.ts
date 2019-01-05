@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 
+import { HttpClientModule } from '@angular/common/http';
+
 // componentes
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -20,7 +22,11 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
     ArtistaComponent,
     NavbarComponent
   ],
-  imports: [BrowserModule, RouterModule.forRoot(ROUTES, { useHash: true })],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(ROUTES, { useHash: true })
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

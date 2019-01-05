@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpotifakeService } from '../../services/spotifake.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  newReleases: any[] = [];
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private spotifake: SpotifakeService) {
+    this.spotifake.getNewReleases().subscribe((info: any) => {
+      console.log(info.albums.items);
+      this.newReleases = info.albums.items;
+    });
   }
 
+  ngOnInit() {}
 }
