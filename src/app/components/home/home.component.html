@@ -1,12 +1,1 @@
-<div class="card-columns">
-  <div class="card" *ngFor="let item of newReleases">
-    <img [src]="item.images | noimage" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">{{ item.name }}</h5>
-      <p class="card-text">por {{ item.artists[0].name }}</p>
-      <p class="card-text">
-        <small class="text-muted">{{ item.release_date }}</small>
-      </p>
-    </div>
-  </div>
-</div>
+<app-tarjeta [items]="newReleases"></app-tarjeta>

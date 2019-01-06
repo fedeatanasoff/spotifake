@@ -4,21 +4,9 @@
       type="text"
       class="form-control"
       placeholder="buscar artista"
-      (keyup.enter)="buscarArtista(artista.value)"
+      (keyup)="buscarArtista(artista.value)"
       #artista
     />
   </div>
 </div>
-
-<div class="card-columns">
-  <div class="card" *ngFor="let artista of artistaBuscado">
-    <img [src]="artista.images | noimage" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <h5 class="card-title">{{ artista.name }}</h5>
-      <!-- <p class="card-text">por {{ artista.name }}</p> -->
-      <!-- <p class="card-text">
-        <small class="text-muted">{{ artista.release_date }}</small>
-      </p> -->
-    </div>
-  </div>
-</div>
+<app-tarjeta [items]="artistaBuscado"></app-tarjeta>

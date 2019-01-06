@@ -15,9 +15,11 @@ export class SearchComponent implements OnInit {
   buscarArtista(artista: string) {
     console.log(artista);
 
-    this.spotifake.getArtista(artista).subscribe(info => {
-      console.log(info);
-      this.artistaBuscado = info;
-    });
+    if (artista != '') {
+      this.spotifake.getArtista(artista).subscribe(info => {
+        console.log(info);
+        this.artistaBuscado = info;
+      });
+    }
   }
 }
