@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mb-5">
   <div class="col-sm-6 offset-3">
     <input
       type="text"
@@ -9,4 +9,5 @@
     />
   </div>
 </div>
-<app-tarjeta [items]="artistaBuscado"></app-tarjeta>
+<app-loading *ngIf="loading"></app-loading>
+<app-tarjeta *ngIf="!loading" [items]="artistaBuscado"></app-tarjeta>

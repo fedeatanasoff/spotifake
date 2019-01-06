@@ -8,18 +8,24 @@ import { SpotifakeService } from '../../services/spotifake.service';
 })
 export class SearchComponent implements OnInit {
   artistaBuscado: any[] = [];
+  loading: boolean;
+
   constructor(private spotifake: SpotifakeService) {}
 
   ngOnInit() {}
 
   buscarArtista(artista: string) {
-    console.log(artista);
+    this.loading = true;
 
-    if (artista != '') {
-      this.spotifake.getArtista(artista).subscribe(info => {
-        console.log(info);
-        this.artistaBuscado = info;
-      });
+    if (artista === '') {
+      this.loading = false;
     }
+
+    this.spotifake.getArtista(artista).subscribe(info => {
+      console.log(info);
+      this.artistaBuscado = info;
+      this.loading = false;
+    });
+    // }
   }
 }
