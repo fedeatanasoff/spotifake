@@ -33,7 +33,7 @@ export class SpotifakeService {
     // console.log('token: ', token);
 
     const headers = new HttpHeaders({
-      Authorization: `Bearer BQChHZDgbA-DhYVIm4DcqqTP89m7koFbiHsr9-gSErXLn-YLGvgaKayORE3-QwcS-wOGoGhduxw-H9jneDw`
+      Authorization: `Bearer BQBHXlk2cdiUwcmWZzzpwFaz0QHarJQWhMa5SeGQ-iOhpzzOFNz4W8PAMuHVQP41NXihVSDEEFHhRixLjsA`
     });
 
     const url = `https://api.spotify.com/v1/${query}`;
@@ -54,7 +54,7 @@ export class SpotifakeService {
         )
         .subscribe((data: any) => {
           tokenServer = data;
-          console.log(data);
+          // console.log(data);
           resolve();
         });
     });
@@ -73,9 +73,19 @@ export class SpotifakeService {
     );
   }
 
-  getArtista(artista: string) {
+  getArtistas(artista: string) {
     return this.getQuery(`search?q=${artista}&type=artist&limit=12`).pipe(
       map(data => data['artists'].items)
+    );
+  }
+
+  getArtista(id: string) {
+    return this.getQuery(`artists/${id}`);
+  }
+
+  getTopTracks(id: string) {
+    return this.getQuery(`artists/${id}/top-tracks?country=ar`).pipe(
+      map(data => data['tracks'])
     );
   }
 }

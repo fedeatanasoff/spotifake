@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
       this.loading = false;
     }
 
-    this.spotifake.getArtista(artista).subscribe(info => {
+    this.spotifake.getArtistas(artista).subscribe(info => {
       console.log(info);
       this.artistaBuscado = info;
       this.loading = false;
