@@ -33,7 +33,7 @@ export class SpotifakeService {
     // console.log('token: ', token);
 
     const headers = new HttpHeaders({
-      Authorization: `Bearer BQCXdXyOllYHamhxI4Oa2SZ7ZuQIGYWV1IL46X9GKLPZBBB_-o5N_7GQ2H5jmr8X-dRk0CwUuXuPYGt_P_I`
+      Authorization: `Bearer BQChHZDgbA-DhYVIm4DcqqTP89m7koFbiHsr9-gSErXLn-YLGvgaKayORE3-QwcS-wOGoGhduxw-H9jneDw`
     });
 
     const url = `https://api.spotify.com/v1/${query}`;
