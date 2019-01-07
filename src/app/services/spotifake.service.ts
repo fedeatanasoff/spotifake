@@ -10,30 +10,8 @@ export class SpotifakeService {
   constructor(private http: HttpClient) {}
 
   getQuery(query: string) {
-    // const client_id = '5845798fd4cd4c9887ba4e538d09ea3b';
-    // const secret_id = 'f27a68cd335a4aeb89e2dcfd74311c60';
-
-    // let token: any;
-
-    // const promesa = new Promise((resolve, reject) => {
-    //   this.http
-    //     .get(
-    //       `http://spotify-get-token.herokuapp.com/spotify/${client_id}/${secret_id}`
-    //     )
-    //     .subscribe((data: any) => {
-    //       resolve(data.access_token);
-    //     });
-    // });
-
-    // promesa.then(data => {
-    //   console.log('then: ', data);
-    //   token = data;
-    // });
-
-    // console.log('token: ', token);
-
     const headers = new HttpHeaders({
-      Authorization: `Bearer BQBHXlk2cdiUwcmWZzzpwFaz0QHarJQWhMa5SeGQ-iOhpzzOFNz4W8PAMuHVQP41NXihVSDEEFHhRixLjsA`
+      Authorization: `Bearer BQC6DNFoWZHjKmy5JsSdWeb0JjBoI2EVo86VaqFcNkd-4QNDXciem9tR0J9APdDw5s3MlWrYh1LqzCiDT7c`
     });
 
     const url = `https://api.spotify.com/v1/${query}`;
@@ -45,26 +23,11 @@ export class SpotifakeService {
     const client_id = '5845798fd4cd4c9887ba4e538d09ea3b';
     const secret_id = 'f27a68cd335a4aeb89e2dcfd74311c60';
 
-    let tokenServer: string;
+    return this.http.get(
+      `http://spotify-get-token.herokuapp.com/spotify/${client_id}/${secret_id}`
+    );
 
-    return new Promise((resolve, reject) => {
-      this.http
-        .get(
-          `http://spotify-get-token.herokuapp.com/spotify/${client_id}/${secret_id}`
-        )
-        .subscribe((data: any) => {
-          tokenServer = data;
-          // console.log(data);
-          resolve();
-        });
-    });
-
-    // return this.http
-    //   .get(
-    //     `http://spotify-get-token.herokuapp.com/spotify/${client_id}/${secret_id}`
-    //   )
-
-    //   .pipe(map(data => data['access_token']));
+    //        `http://spotify-get-token.herokuapp.com/spotify/${client_id}/${secret_id}`
   }
 
   getNewReleases() {

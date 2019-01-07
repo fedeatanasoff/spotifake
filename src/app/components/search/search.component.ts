@@ -10,7 +10,11 @@ export class SearchComponent implements OnInit {
   artistaBuscado: any[] = [];
   loading: boolean;
 
-  constructor(private spotifake: SpotifakeService) {}
+  error: boolean;
+  errorMessage: any = {};
+  constructor(private spotifake: SpotifakeService) {
+    this.error = false;
+  }
 
   ngOnInit() {}
 
@@ -21,11 +25,18 @@ export class SearchComponent implements OnInit {
       this.loading = false;
     }
 
-    this.spotifake.getArtistas(artista).subscribe(info => {
-      console.log(info);
-      this.artistaBuscado = info;
-      this.loading = false;
-    });
+    this.spotifake.getArtistas(artista).subscribe(
+      info => {
+        console.log(info);
+        this.artistaBuscado = info;
+        this.loading = false;
+      },
+      errorSearch => {
+        this.loading = false;
+        this.error = true;
+        this.errorMessage = errorSearch;
+      }
+    );
     // }
   }
 }
